@@ -1,0 +1,21 @@
+# Environment and configuration files
+.env
+.streamlit/
+*.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+
+# Cache and local files
+.cache/
+.local/
+.upm/
+
+# Replit
+replit.nix
+
+# OS files
+.DS_Store
