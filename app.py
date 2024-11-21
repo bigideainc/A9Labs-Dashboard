@@ -108,11 +108,18 @@ class MetricsManager:
         return df.sort_values('timestamp')
 
 # Get configuration
-hf_token = st.secrets.get("HF_TOKEN", os.getenv("HF_TOKEN"))
-central_repo = st.secrets.get("CENTRAL_REPO", os.getenv("CENTRAL_REPO", "Tobius/yogpt_test"))
+try:
+    hf_token = st.secrets["HF_TOKEN"]
+except:
+    hf_token = os.getenv("HF_TOKEN")
+
+try:
+    central_repo = st.secrets["CENTRAL_REPO"]
+except:
+    central_repo = os.getenv("CENTRAL_REPO", "Tobius/yogpt_test")
 
 if not hf_token:
-    st.error("No Hugging Face token found")
+    st.error("No Hugging Face token found. Please set HF_TOKEN in environment variables.")
     st.stop()
 
 # Initialize metrics manager
